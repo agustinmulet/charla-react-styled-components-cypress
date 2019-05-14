@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import Ritmosustanciometro from './Ritmosustanciometro';
 
@@ -24,15 +25,14 @@ function App() {
   async function obtenerRitmosustancia(event) {
     event.preventDefault();
 
-    const request = await fetch(
+    const ritmosustancia = await axios.get(
       'https://wt-3581e5a0e6c19bb4a0552203b2738a9d-0.run.webtask.io/obtener-ritmosustancia'
     );
-    const response = await request.json();
 
     setIndividuos(
       individuos.concat({
-        nombre: nombre,
-        ritmosustancia: response,
+        nombre,
+        ritmosustancia,
       })
     );
     setNombre('');
