@@ -48,7 +48,12 @@ function App() {
         />
       ))}
       <form onSubmit={obtenerRitmosustancia}>
-        <input type="text" value={nombre} onChange={actualizarNombre} />
+        <input
+          data-test="nombre"
+          type="text"
+          value={nombre}
+          onChange={actualizarNombre}
+        />
         <button type="submit">Obtener ritmosustancia</button>
       </form>
     </Container>
