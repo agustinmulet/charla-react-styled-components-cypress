@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Ritmosustanciometro from './Ritmosustanciometro';
 
-const App = () => {
+function App() {
   const [nombre, setNombre] = useState('');
   const [individuos, setIndividuos] = useState([
     {
@@ -47,6 +47,6 @@ const App = () => {
       </form>
     </div>
   );
-};
+}
 
 export default App;
