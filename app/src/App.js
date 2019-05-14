@@ -8,10 +8,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Ritmosustanciometro
-        </p>
+        <img alt="logo" className="App-logo" src={logo} />
+        <p>Ritmosustanciometro</p>
       </header>
     </div>
   );
