@@ -1,18 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import logo from './logo.svg';
+import Ritmosustanciometro from './Ritmosustanciometro';
 
-import './App.css';
+const App = () => {
+  const [nombre, setNombre] = useState('');
+  const [individuos, setIndividuos] = useState([
+    {
+      nombre: 'goncy',
+      ritmosustancia: 100,
+    },
+  ]);
 
-function App() {
+  function actualizarNombre(event) {
+    setNombre(event.target.value);
+  }
+
+  async function obtenerRitmosustancia(event) {
+    event.preventDefault();
+
+    const request = await fetch(
+      'https://wt-3581e5a0e6c19bb4a0552203b2738a9d-0.run.webtask.io/obtener-ritmosustancia'
+    );
+    const response = await request.json();
+
+    setIndividuos(
+      individuos.concat({
+        nombre: nombre,
+        ritmosustancia: response,
+      })
+    );
+    setNombre('');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img alt="logo" className="App-logo" src={logo} />
-        <p>Ritmosustanciometro</p>
-      </header>
+    <div>
+      <h1>Ritmosustanciometro</h1>
+      {individuos.map(individuo => (
+        <Ritmosustanciometro
+          nombre={individuo.nombre}
+          ritmosustancia={individuo.ritmosustancia}
+        />
+      ))}
+      <form onSubmit={obtenerRitmosustancia}>
+        <input type="text" value={nombre} onChange={actualizarNombre} />
+        <button type="submit">Obtener ritmosustancia</button>
+      </form>
     </div>
   );
-}
+};
 
 export default App;
