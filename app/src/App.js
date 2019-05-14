@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import Ritmosustanciometro from './Ritmosustanciometro';
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 640px;
+`;
 
 function App() {
   const [nombre, setNombre] = useState('');
@@ -33,7 +39,7 @@ function App() {
   }
 
   return (
-    <div>
+    <Container>
       <h1>Ritmosustanciometro</h1>
       {individuos.map(individuo => (
         <Ritmosustanciometro
@@ -45,7 +51,7 @@ function App() {
         <input type="text" value={nombre} onChange={actualizarNombre} />
         <button type="submit">Obtener ritmosustancia</button>
       </form>
-    </div>
+    </Container>
   );
 }
 
